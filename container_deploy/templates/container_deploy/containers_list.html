@@ -1,0 +1,20 @@
+{% extends 'container_deploy/index.html' %}
+
+{% block content %}
+
+<div>
+    <h2>Containers list</h2>
+    <ol>
+        {% for container in containers %}
+            <li>
+                {{ container }}
+                <ul>
+                    <li>short id: {{ container.short_id }}</li>
+                    <li>tags: {{ container.tags }}</li>
+                </ul>
+            </li>
+        {% endfor %}
+    </ol>
+</div>
+
+{% endblock %}

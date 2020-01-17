@@ -1,0 +1,23 @@
+{% extends 'container_deploy/index.html' %}
+
+{% block content %}
+
+<div>
+    <h2>Run another container</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div>
+            <label for="image-name">Image:</label>
+            <input id="image-name" type="text" name="image_name">
+        </div>
+
+        <div>
+            <label for="cmd-text">Cmd:</label>
+            <input id="cmd-text" type="text" name="cmd_text">
+        </div>
+
+        <input type="submit" value="Run">
+    </form>
+</div>
+
+{% endblock %}
