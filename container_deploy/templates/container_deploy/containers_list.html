@@ -3,18 +3,45 @@
 {% block content %}
 
 <div>
-    <h2>containers list</h2>
+    <h2>Containers list</h2>
+    <h3>Running</h3>
     <ol>
-        {% for container in containers %}
+        {% for container in running %}
             <li>
                 {{ container }}
                 <ul>
-                    <li>short id: {{ container.short_id }}</li>
-{#                    <li>tags: {{ image.tags }}</li>#}
+                    <li>image : {{ container.image }}</li>
+                    <li>name : {{ container.name }}</li>
+                    <li>status: {{ container.status }}</li>
                 </ul>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="text" name="container_id" style="display: none;" value={{ container.id }}>
+                    <input type="text" name="method_type" style="display: none;" value="stop">
+                    <input type="submit" name="stop" value="Stop" />
+                </form>
             </li>
         {% endfor %}
     </ol>
+    <h3>Exited</h3>
+            <ol>
+                {% for container in exited %}
+                    <li>
+                        {{ container }}
+                        <ul>
+                            <li>image : {{ container.image }}</li>
+                            <li>name : {{ container.name }}</li>
+                            <li>status: {{ container.status }}</li>
+                        </ul>
+                    <form method="post">
+                    {% csrf_token %}
+                    <input type="text" name="container_id" style="display: none;" value={{ container.id }}>
+                    <input type="text" name="method_type" style="display: none;" value="delete">
+                    <input type="submit" name="delete" value="Delete" />
+                </form>
+                    </li>
+                {% endfor %}
+            </ol>
 </div>
 
 {% endblock %}
