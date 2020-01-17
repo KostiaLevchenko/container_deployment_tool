@@ -3,14 +3,14 @@
 {% block content %}
 
 <div>
-    <h2>Containers list</h2>
+    <h2>containers list</h2>
     <ol>
         {% for container in containers %}
             <li>
                 {{ container }}
                 <ul>
                     <li>short id: {{ container.short_id }}</li>
-                    <li>tags: {{ container.tags }}</li>
+{#                    <li>tags: {{ image.tags }}</li>#}
                 </ul>
             </li>
         {% endfor %}

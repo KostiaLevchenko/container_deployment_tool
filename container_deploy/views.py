@@ -4,11 +4,7 @@ from . forms import RunContainer
 from . models import Container
 # Create your views here.
 
-# def images_list(request):
-#     # containers = Container.objects.order_by('image')
-#     client = docker.from_env()
-#     images = client.images.list()
-#     return render(request, 'container_deploy/images_list.html', {'images': images})
+
 
 
 def run(image, cmd):
@@ -25,8 +21,13 @@ def run_another_container(request):
         return render(request, 'container_deploy/run_another_container.html')
 
 
+def images_list(request):
+    client = docker.from_env()
+    images = client.images.list()
+    return render(request, 'container_deploy/images_list.html', {'images': images})
+
+
 def containers_list(request):
     client = docker.from_env()
-    containers = client.images.list()
-    print(type(containers[0]))
+    containers = client.containers.list()
     return render(request, 'container_deploy/containers_list.html', {'containers': containers})

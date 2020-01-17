@@ -1,0 +1,20 @@
+{% extends 'container_deploy/index.html' %}
+
+{% block content %}
+
+<div>
+    <h2>images list</h2>
+    <ol>
+        {% for image in images %}
+            <li>
+                {{ image }}
+                <ul>
+                    <li>short id: {{ image.short_id }}</li>
+                    <li>tags: {{ image.tags }}</li>
+                </ul>
+            </li>
+        {% endfor %}
+    </ol>
+</div>
+
+{% endblock %}
